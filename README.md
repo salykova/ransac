@@ -15,3 +15,4 @@ Succesfully detected plane and colored the inliers with red of the down-sampled 
 <img src="https://user-images.githubusercontent.com/63703454/125992959-ad8f24cc-df16-4d92-b09c-315a8a3a8628.png" width="500" height="400">
 <img src="https://user-images.githubusercontent.com/63703454/125992980-db76c173-2ed5-4789-a2c0-163ee7ea8b38.png" width="500" height="400">
 
+Example pointcloud with multiple planes visible. Example result on down-sampled point cloud with planes in different colors.
