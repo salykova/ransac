@@ -13,7 +13,7 @@ from plot_results import *
 
 if __name__ == '__main__':
     # Selects which single-plane file to use
-    pointcloud_idx = 4
+    pointcloud_idx = 1
     #########################################################
     # RANSAC parameters:
     confidence = 0.85
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     error_functions = [ransac_error, msac_error, mlesac_error]
     error_function_idx = 0
 
-    voxel_size = 0.01
+    voxel_size = 0.005
     #########################################################
 
     # Read Pointcloud
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # Down-sample the loaded point cloud to reduce computation time
     #pcd_sampled = pcd.uniform_down_sample(13)
     pcd_sampled = pcd.voxel_down_sample(voxel_size=voxel_size)
-    """
+    
     # Apply plane-fitting algorithm
     best_plane, best_inliers, num_iterations = fit_plane(pcd=pcd_sampled,
                                                          confidence=confidence,
@@ -45,11 +45,11 @@ if __name__ == '__main__':
 
     # Plot the result
     plot_dominant_plane(pcd_sampled, best_inliers, best_plane)
-    """
+    
     #########################################################
     # Multi-Plane parameters
     multi_plane_names = ['desk', 'door', 'kitchen']
-    multi_plane_idx = 2
+    multi_plane_idx = 1
 
     # RANSAC parameters:
     min_points_prop = 0.04
@@ -72,14 +72,15 @@ if __name__ == '__main__':
     # Down-sample the loaded point cloud to reduce computation time
     pcd_multi_sampled = pcd_multi.uniform_down_sample(10)
     #pcd_multi_sampled = pcd_multi.voxel_down_sample(voxel_size=voxel_size_multi)
-
+    
     plane_eqs, plane_pcds, filtered_pcd = filter_planes(pcd=pcd_multi_sampled,
                                                         min_points_prop=min_points_prop,
                                                         confidence=confidence_multi,
                                                         inlier_threshold=inlier_threshold_multi,
                                                         min_sample_distance=min_sample_distance_multi,
                                                         error_func=error_functions[error_function_idx_multi])
-
+    
     plot_multiple_planes(plane_eqs=plane_eqs,
                          plane_pcds=plane_pcds,
                          filtered_pcd=filtered_pcd)
+    
