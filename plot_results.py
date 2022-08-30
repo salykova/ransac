@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """ Helper functions to plot the results
-
+Author: Matthias Hirschmanner
 """
 from typing import List, Tuple
 
